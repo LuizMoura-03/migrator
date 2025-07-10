@@ -8,8 +8,10 @@ Todo o processo de migração deste projeto — de uma API Node.js (Express) par
 
 - **[Agente "migrated"](https://ai.stackspot.com/agents/01JZKSXH6HNFF9312RBDWNARXB?tabIndex=0):** Orquestrou e automatizou todas as tarefas de migração, centralizando conhecimento e decisões técnicas.
 - **[Knowledge Source "Guia Descritivo de Migração"](https://ai.stackspot.com/knowledge-sources/c92ccd-guia-descritivo-de-migracao?tabIndex=0):** Fonte de referência técnica e de boas práticas, garantindo qualidade e padronização em cada etapa.
-- **[Quick Command "Migra de Node.Js para Java (remote)"](https://ai.stackspot.com/quick-command/migrar-de-nodejs-para-java?tabIndex=0):** Comando rápido que executou a migração de forma automatizada, integrando agente e base de conhecimento.
-- **[Spot Integrado](https://ai.stackspot.com/spots/01JZP9H7GJKY4Z8JW2X9YB9KGN):** Centralizou todos os componentes acima, promovendo colaboração, rastreabilidade e reuso.
+- **[Quick Command "Migra de Node.Js para Java"](https://ai.stackspot.com/quick-command/migrar-de-nodejs-para-java?tabIndex=0):** Comando rápido que executou a migração de forma automatizada, integrando agente e base de conhecimento.
+- **[Spot Integrado "Language-Migrator"](https://ai.stackspot.com/spots/01JZP9H7GJKY4Z8JW2X9YB9KGN):** Centralizou todos os componentes acima, promovendo colaboração, rastreabilidade e reuso.
+- **[Stack AI "Language-Migrator-Stack"](https://ai.stackspot.com/stacks-ai/01JZTJBJDNS40WS6X9AK3HK3TQ?tabIndex=0):** Conecta você ao ecossistema de StackSpot e à nossa stack especializada para migração de linguagens.
+
 
 #### Benefícios concretos do uso da StackSpot AI
 
@@ -93,6 +95,8 @@ Aguarde até aparecer a mensagem indicando que a aplicação está rodando (por 
 * Health: http://localhost:8080/health
 * Produtos: http://localhost:8080/api/produtos
 
+Caso receba erro de “conexão recusada”, verifique se a aplicação foi iniciada corretamente e se a porta 8080 está disponível.
+
 ## 4. Acesse o console do H2 (opcional)
 
    Se quiser visualizar o banco de dados em memória, acesse:
@@ -101,9 +105,15 @@ Aguarde até aparecer a mensagem indicando que a aplicação está rodando (por 
 
 Preencha o campo JDBC URL com:
 * JDBC URL: jdbc:h2:file:~/migration
-* User Name: sa
+* User Name:(deixe em branco)
 * Password: (deixe em branco)
 * Clique em Connect.
+
+Importante: Após conectar ao H2 Console, para listar os produtos cadastrados, você pode executar a seguinte query:
+
+SELECT * FROM produtos;
+
+Essa instrução SQL retornará todos os registros da tabela de produtos.
 
 ## Observações
 * O projeto utiliza banco H2 em arquivo (jdbc:h2:file:~/migration). Isso garante que os dados cadastrados permaneçam salvos mesmo após reiniciar ou fechar a aplicação.
@@ -125,5 +135,6 @@ Atenção: No modo memória (mem), o banco de dados existe apenas enquanto a apl
 * Knowledge Source "Guia Descritivo de Migração"
 * Quick Command "Migra de Node.Js para Java (remote)"
 * Spot Integrado.
+* Stacks AI "Language-Migrator-Stack"
 
 # StackSpot AI foi a base de toda a transformação deste projeto, promovendo automação, qualidade e evolução tecnológica.
