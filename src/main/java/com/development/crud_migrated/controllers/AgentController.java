@@ -1,5 +1,6 @@
 package com.development.crud_migrated.controllers;
 
+import com.development.crud_migrated.dtos.PerguntaDTO;
 import com.development.crud_migrated.services.StackSpotAgentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,9 @@ public class AgentController {
     private StackSpotAgentService agentService;
 
     @PostMapping("/perguntar")
-    public ResponseEntity<String> perguntarAoAgente(@RequestBody String pergunta) {
+    public ResponseEntity<String> perguntarAoAgente(@RequestBody PerguntaDTO dto) {
         try {
-            String resposta = agentService.perguntarAoAgente(pergunta);
+            String resposta = agentService.perguntarAoAgente(dto.getPergunta());
             return ResponseEntity.ok(resposta);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
