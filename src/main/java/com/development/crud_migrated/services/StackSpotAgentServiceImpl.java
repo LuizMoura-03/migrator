@@ -40,4 +40,22 @@ public class StackSpotAgentServiceImpl implements StackSpotAgentService{
         return json.getString("access_token");
     }
 
+    @Override
+    public String perguntarAoAgente(String pergunta) throws Exception {
+        String token = getAccessToken();
+        JSONObject body = new JSONObject();
+        body.put("prompt", pergunta);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(config.getEndpoint()))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Bearer " + token)
+                .POST(HttpRequest.BodyPublishers.ofString(body.toString()))
+                .build();
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpResponse<String> response = client.send((java.net.http.HttpRequest) request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+
 }
