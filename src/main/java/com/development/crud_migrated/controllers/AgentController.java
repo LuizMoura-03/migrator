@@ -17,15 +17,18 @@ public class AgentController {
     @Autowired
     private StackSpotAgentService agentService;
 
-    @PostMapping("/perguntar")
+    @PostMapping("/perguntar-agente")
     public ResponseEntity<String> perguntarAoAgente(@RequestBody PerguntaDTO dto) {
         try {
+            System.out.println("DTO recebido: " + dto.getPergunta());
             String resposta = agentService.perguntarAoAgente(dto.getPergunta());
             return ResponseEntity.ok(resposta);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Erro ao consultar agente: " + e.getMessage());
         }
+
     }
 
 }
